@@ -1,35 +1,35 @@
 const addButton = document.querySelector('.add-product');
 const clearButton = document.querySelector('.clear-list');
-const productsList = document.querySelector('.products-list');
+const productList = document.querySelector('.products-list');
 
-addButton.addEventListener('click', () => {
-  const productType = document.getElementById('type-select').value;
-  const productName = document.getElementById('product-name').value;
-  const productCount = document.getElementById('product-count').value;
+addButton.addEventListener('click', function() {
+  const type = document.getElementById('type-select').value;
+  const name = document.getElementById('product-name').value;
+  const count = document.getElementById('product-count').value;
 
-  let isValid = true;
+  let valid = true;
 
-  if (!productType) {
-    alert('Ошибка: Выберите тип продукта');
-    isValid = false;
+  if (!type) {
+    alert('Ошибка: Нужно выбрать тип продукта');
+    valid = false;
   }
 
-  if (!productName) {
-    alert('Ошибка: Введите название продукта');
-    isValid = false;
+  if (!name) {
+    alert('Ошибка: Нужно ввести название продукта');
+    valid = false;
   }
 
-  if (!productCount) {
-    alert('Ошибка: Введите количество продукта');
-    isValid = false;
+  if (!count) {
+    alert('Ошибка: Нужно ввести количество продукта');
+    valid = false;
   }
 
-  if (isValid) {
-    const productItem = document.createElement('div');
-    productItem.classList.add('product-item');
-    productItem.textContent = `${productType} - ${productName} (${productCount} шт.)`;
-
-    productsList.appendChild(productItem);
+  if (valid) {
+    const item = document.createElement('div');
+    item.className = 'product-item';
+    item.textContent = type + ' - ' + name + ' (' + count + ' шт.)';
+    
+    productList.appendChild(item);
 
     document.getElementById('type-select').value = "";
     document.getElementById('product-name').value = "";
@@ -37,6 +37,6 @@ addButton.addEventListener('click', () => {
   }
 });
 
-clearButton.addEventListener('click', () => {
-  productsList.innerHTML = '';
+clearButton.addEventListener('click', function() {
+  productList.innerHTML = '';
 });
